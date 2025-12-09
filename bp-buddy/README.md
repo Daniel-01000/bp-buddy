@@ -1,78 +1,108 @@
+# 🩺 BP Buddy – Blood Pressure Tracking App
 
-1️⃣ How Does Chat Coach & History Know About Readings?
-Answer: They share data through bpStore.ts
-You're using a shared state management system called a store.
+BP Buddy is a mobile health app that helps users track and manage their blood pressure.  
+It’s built with **React Native/Expo** and includes an **AI-powered health coach** that gives personalised guidance based on your readings.
 
+---
 
-┌─────────────────────────────────────────────────────┐
-│  bpStore.ts (SHARED DATA STORAGE) 🗄️               │
-│  Stores all BP readings in one place                │
-│                                                     │
-│  readings = [                                       │
-│    { id: 1, systolic: 120, diastolic: 80, ... },   │
-│    { id: 2, systolic: 135, diastolic: 88, ... }    │
-│  ]                                                  │
-└───────────────┬──────────────────┬──────────────────┘
-                │                  │
-                │                  │
-        ┌───────┴────────┐  ┌──────┴────────┐
-        │                │  │               │
-        ↓                ↓  ↓               ↓
-┌───────────────┐  ┌──────────────┐  ┌─────────────┐
-│ History Screen│  │ Chat Coach   │  │ Home Screen │
-│               │  │              │  │             │
-│ - Shows list  │  │ - Analyzes   │  │ - Shows     │
-│   of readings │  │   readings   │  │   latest    │
-│ - Categories  │  │ - Gives      │  │   reading   │
-│   (red/green) │  │   advice     │  │             │
-└───────────────┘  └──────────────┘  └─────────────┘
+## 🔍 What It Does
 
+### 📊 Core Features
 
+- **Track Blood Pressure** – Log systolic/diastolic readings with timestamps  
+- **Smart Categories** – Automatic classification:
+  - Normal
+  - Elevated
+  - High (Stage 1 & 2)
+  - Hypertensive Crisis
+- **Visual History** – View all readings with **color-coded categories** (green / orange / red)
+- **AI Health Coach** – Chat with an AI assistant that:
+  - Analyses your BP data
+  - Gives personalised advice
+  - Answers questions about blood pressure
+- **Personal Notes** – Add notes for:
+  - Medications  
+  - Symptoms  
+  - Lifestyle changes
+- **User Profiles** – Secure authentication with personal health data storage
 
-2️⃣ What Makes Readings Green, Orange, or Red?
-Answer: Based on Blood Pressure Categories (Medical Standards)
+---
 
-// Example 1: Normal (Green)
-getBPCategory(115, 75);
-// Returns: { category: 'Normal', color: '#10B981' (green) }
-// ✅ Healthy!
+## 🎨 Color-Coded Health Status
 
-// Example 2: Elevated (Orange)
-getBPCategory(125, 78);
-// Returns: { category: 'Elevated', color: '#F59E0B' (orange) }
-// ⚠️ Watch it, starting to get high
+| Status       | Color     | Range (mmHg)              |
+|-------------|-----------|---------------------------|
+| Normal      | 🟢 Green  | `< 120/80`                |
+| Elevated    | 🟠 Orange | `120–129 / < 80`          |
+| High        | 🔴 Red    | `≥ 130/80`                |
+| Crisis      | 🚨 Dark Red | `≥ 180/120`            |
 
-// Example 3: High Stage 1 (Light Red)
-getBPCategory(135, 85);
-// Returns: { category: 'High Stage 1', color: '#EF4444' (red) }
-// 🔴 High blood pressure, see doctor
+---
 
-// Example 4: High Stage 2 (Dark Red)
-getBPCategory(150, 95);
-// Returns: { category: 'High Stage 2', color: '#DC2626' (darker red) }
-// 🔴🔴 Very high, medication likely needed
+## 🤖 AI Health Coach
 
-// Example 5: Crisis (Emergency Red)
-getBPCategory(190, 125);
-// Returns: { category: 'Crisis', color: '#991B1B' (darkest red) }
-// 🚨 Emergency! Call 911!
+The AI coach:
 
-Q1: How do Chat Coach & History know about readings?
-A1: They both read from bpStore.ts (shared data store)
+- Understands your **latest BP reading**
+- Provides **health tips** and **lifestyle advice**
+- Encourages **healthy habits**
+- Answers **common blood pressure questions**
+- Reminds you to **consult a doctor** when needed
 
-Q2: What makes readings green/orange/red?
-A2: Based on medical categories:
-    • Green: < 120/80 (Normal)
-    • Orange: 120-129/<80 (Elevated)
-    • Red: ≥ 130/80 (High)
+---
 
-Q3: How does AI know how to behave?
-A3: Through system prompt (instructions you give it)
+## 🔒 Security & Privacy
 
-Q4: How to make AI behave how you want?
-A4: Write detailed system prompt with:
-    • Role definition
-    • Personality traits
-    • Knowledge base
-    • Response guidelines
-    • Examples
+- GDPR-aware with **user consent management**
+- **Encrypted passwords** using bcrypt hashing
+- **JWT authentication tokens**
+- **Secure data storage** in MongoDB Atlas
+- Users have the **right to delete all personal data**
+
+---
+
+## 🧱 Tech Stack
+
+### 📱 Frontend (Mobile App)
+
+- React Native with Expo
+- TypeScript
+- Zustand (state management)
+- OpenAI API (AI coach)
+
+### 🖥 Backend (API Server)
+
+- Node.js with Express.js
+- MongoDB Atlas (cloud database)
+- JWT authentication
+- Bcrypt password hashing
+
+---
+
+## ⚙️ How It Works
+
+1. User signs up and logs in securely  
+2. Blood pressure readings are entered and stored with timestamps  
+3. Readings are **categorised and color-coded**  
+4. AI coach uses the saved readings to give **personalised feedback**  
+5. Users can review their **history, notes, and trends** over time  
+
+---
+
+## 🎯 Project Purpose
+
+This is a **final year university project** showcasing:
+
+- Full-stack mobile development
+- AI integration for health tech
+- Secure authentication & data management
+- GDPR-aware design
+- Medical data visualisation
+- RESTful API design
+
+---
+
+## 🗣 In Simple Terms
+
+> “BP Buddy is like having a personal blood pressure tracker and health coach in your pocket.  
+> It remembers all your readings, shows you trends with easy c
