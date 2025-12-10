@@ -20,7 +20,9 @@ export default function GDPRConsentScreen() {
     if (!accepted) return;
     
     setLoading(true);
+    // Store consent in AsyncStorage or backend
     try {
+      // TODO: Save consent to user profile
       router.replace('/(tabs)');
     } catch (error) {
       console.error('Error saving consent:', error);

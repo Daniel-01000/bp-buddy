@@ -63,6 +63,3 @@ coverage/
 # Build artifacts
 build/
 *.tgz
-
-# History/backup folders
-.history/

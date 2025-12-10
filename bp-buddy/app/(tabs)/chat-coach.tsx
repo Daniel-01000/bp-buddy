@@ -254,7 +254,9 @@ export default function ChatCoachScreen() {
           <IconSymbol size={24} name="chevron.left" color="#60A5FA" />
         </TouchableOpacity>
         <Text style={styles.headerTitle}>Chat with BP Coach</Text>
-        <View style={{ width: 40 }} />
+        <TouchableOpacity onPress={() => console.log('Phone icon pressed')}>
+          <IconSymbol size={24} name="phone.fill" color="#60A5FA" />
+        </TouchableOpacity>
       </View>
 
       <KeyboardAvoidingView 
